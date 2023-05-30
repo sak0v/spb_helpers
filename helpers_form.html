@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Helpers Form</title>
+    <style>
+    body {
+      background-image: url("");
+      background-size: cover;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+    
+    .form-group textarea {
+      height: 100px;
+    }
+    
+    .form-group button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    .form-group button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" > 
+    <form action="thankyou_page.html" action="https://formsubmit.co/volturisalts@gmail.com" method="POST">
+      <div class="form-group">
+        <label for="name">Ваше настоящее имя:</label>
+        <input type="text" id="name" name="name" placeholder="Укажите свое настоящее имя">
+      </div>
+      <div class="form-group">
+        <label for="email">Ваша эл.почта:</label>
+        <input type="email" id="email" name="email" placeholder="Укажите свою эл.почту"required>
+      </div>
+      <div class="form-group">
+        <label for="nickname">Игровой никнейм:</label>
+        <input type="text" id="nickname" name="nickname" placeholder="Укажите свой игровой никнейм" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Укажите свой возраст:</label>
+        <select id="age" name="age" required>
+          <option value="15">15 лет</option>
+          <option value="16">16 лет</option>
+          <option value="17">17 лет</option>
+          <option value="18">18 лет</option>
+          <option value="19">19 лет</option>
+          <option value="20">20+</option>
+        </select>
+      </div>
+      <div class="form-group">
+      
+
+      </div>
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
