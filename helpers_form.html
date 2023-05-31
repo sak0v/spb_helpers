@@ -3,72 +3,99 @@
 <head>
   <title>Helpers Form</title>
   <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Validation</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <script defer src="WEB.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      font-family: 'Poppins', Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
+      padding: 0;
     }
-    .input-control input {
-    border: 2px solid #f0f0f0;
-	border-radius: 4px;
-	display: block;
-	font-size: 12px;
-	padding: 10px;
-	width: 100%;
+    .container {
+  animation: slideInFromLeft 0.5s ease-in-out;
 }
 
-.input-control input:focus {
-    outline: 0;
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.input-control.success input {
-    border-color: #09c372;
+.input-control {
+  animation: fadeIn 1s ease-in-out;
 }
 
-.input-control.error input {
-    border-color: #ff3860;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.input-control .error {
-    color: #ff3860;
-    font-size: 9px;
-    height: 13px;
+.error {
+  animation: shake 0.5s ease-in-out;
 }
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 
     .container {
       width: 90%;
       max-width: 400px;
       padding: 30px;
-      background-color: #222;
+      background-color: rgba(255, 255, 255, 0.9);
       border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
     .container label {
       display: block;
       font-size: 14px;
       margin-bottom: 10px;
+      color: #000;
     }
 
     .container input,
     .container select {
       width: 100%;
       padding: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       border: none;
-      background-color: #333;
-      color: #fff;
+      background-color: #f0f0f0;
+      color: #333;
       border-radius: 5px;
     }
 
@@ -90,58 +117,79 @@
     .container button:hover {
       background-color: #0056b3;
     }
+
+    .container .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 1px;
+    }
+
+    .container .input-error input,
+    .container .input-error select {
+      border: 2px solid red;
+    }
   </style>
 </head>
-  </body>
-  <body>
+<body>
   <div class="container">
-    <form action="https://formsubmit.co/volturisalts@gmail.com" method="POST" enctype="multipart/form-data">
+    <form action="https://formsubmit.co/volturisalts@gmail.com" method="POST" enctype="multipart/form-data" novalidate>
       <input type="hidden" name="_subject" value="New submission!">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="https://spbhelpers.netlify.app/thankyou_page.html">
       <input type="hidden" name="_template" value="table">
-      <form method="POST" action="https://formsubmit.co/your@email.com">
-        <div class="input-control">
-          <label for="name">Ваше настоящее имя:</label>
-          <input type="text" id="name" name="name" placeholder="Укажите свое настоящее имя" required>
-          <div class="error"></div>
-        </div>
-        <div class="input-control">
-          <label for="email">Ваша эл.почта:</label>
-          <input type="email" id="email" name="email" placeholder="Укажите свою эл.почту" required>
-          <div class="error"></div>
-        </div>
-        <div class="input-control">
-          <label for="nickname">Игровой никнейм:</label>
-          <input type="text" id="nickname" name="nickname" placeholder="Укажите свой игровой никнейм" required>
-          <div class="error"></div>
-        </div>
-        <div class="input-control">
-          <label for="age">Укажите свой возраст:</label>
-          <select id="age" name="age">
-            <option value="15">15 лет</option>
-            <option value="16">16 лет</option>
-            <option value="17">17 лет</option>
-            <option value="18">18 лет</option>
-            <option value="19">19 лет</option>
-            <option value="20">20+</option>
-          </select>
-        </div>
-        <div class="input-control">
-          <sub>Прикрепите скриншот статистики:</sub>
-          <input type="file" name="attachment" accept="image/png, image/jpeg" required>
-          <div class="error"></div>
-        </div>
-         <div class="input-control">
+      <header> <b>Agent of Support Form</b></header><br>
+      <div class="input-control">
+        <label for="name">Ваше настоящее имя:</label>
+        <input type="text" id="name" name="name" 
+        placeholder="Укажите свое настоящее имя" 
+        pattern="[a-z]*" required>
+        <div class="error"></div>
+      </div>
+
+      <div class="input-control">
+        <label for="email">Ваша эл.почта:</label>
+        <input type="email" id="email" name="email" placeholder="Укажите свою эл.почту" required>
+        <div class="error"></div>
+      </div>
+
+      <div class="input-control">
+        <label for="nickname">Игровой никнейм:</label>
+        <input type="text" id="nickname" name="nickname" placeholder="Укажите свой игровой никнейм" required>
+        <div class="error"></div>
+      </div>
+
+      <div class="input-control">
+        <label for="age">Укажите свой возраст:</label>
+        <select id="age" name="age" required>
+          <option disabled selected hidden>Выберите опцию</option>
+          <option value="15">15 лет</option>
+          <option value="16">16 лет</option>
+          <option value="17">17 лет</option>
+          <option value="18">18 лет</option>
+          <option value="19">19 лет</option>
+          <option value="20">20+</option>
+        </select>
+        <div class="error"></div>
+      </div>
+
+      <div class="input-control">
+        <sub>Прикрепите скриншот статистики:</sub>
+        <input type="file" name="attachment" accept="image/png, image/jpeg" required>
+        <div class="error"></div>
+      </div>
+
+      <div class="input-control">
         <sub>Прикрепите скриншот своих привязок:</sub>
-          <input type="file" name="attachment" accept="image/png, image/jpeg" required>
-          <div class="error"></div>
-        </div>
-        <div class="input-control">
-          <button type="submit">Заполнить</button>
-        </div>
-      </form>
+        <input type="file" name="attachment" accept="image/png, image/jpeg" required>
+        <div class="error"></div>
+      </div>
+
+      <div class="input-control">
+        <button type="submit">Заполнить</button>
+      </div>
     </form>
   </div>
+
+  <script src="WEB.js"></script>
 </body>
 </html>
