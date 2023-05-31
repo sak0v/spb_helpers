@@ -2,95 +2,104 @@
 const form = document.querySelector('form');
 
 // Add event listener for form submission
-form.addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent form from submitting
+form.addEventListener('submit', (event) => {
+  // Prevent form submission
+  event.preventDefault();
 
-  // Validate the form fields
+  // Clear existing error messages
+  clearErrorMessages();
+
+  // Validate each input field
   const nameInput = document.getElementById('name');
+  validateRequiredField(nameInput);
+
   const emailInput = document.getElementById('email');
+  validateEmailField(emailInput);
+
   const nicknameInput = document.getElementById('nickname');
+  validateRequiredField(nicknameInput);
+
+  const vkInput = document.getElementById('vk');
+  validateRequiredField(vkInput);
+
+  const discordInput = document.getElementById('discord');
+  validateRequiredField(discordInput);
+
   const ageSelect = document.getElementById('age');
-  const discord = document.getElementById('discord')
-  const vk = document.getElementById('vk')
+  validateSelectField(ageSelect);
 
-  // Validate name field
-if (nameInput.value.trim() === '') {
-  showError(nameInput, 'Specify your real name');
-} else if (/\d/.test(nameInput.value.trim())) {
-  showError(nameInput, 'Name');
-} else {
-  removeError(nameInput);
-}
-
-// Validate nickname field
-if (nicknameInput.value.trim() === '') {
-  showError(nicknameInput, 'Specify your in game NickName');
-} else if (/\d/.test(nicknameInput.value.trim())) {
-  showError(nicknameInput, 'NickName cannot contain numbers');
-} else {
-  removeError(nicknameInput);
-}
-
-// Validate discord field
-if (discord.value.trim() === '') {
-  showError(discord, 'Specify your discord ID');
-} else if (/\D/.test(discord.value.trim())) {
-  showError(discord, 'ID can contain only numbers!');
-} else {
-  removeError(discord);
-}
-
-// Validate vk field
-if (vk.value.trim() === '') {
-  showError(vk, 'Specify your VK ID');
-} else if (/\D/.test(vk.value.trim())) {
-  showError(vk, 'ID can contain only numbers!');
-} else {
-  removeError(vk);
-}
-
-
-  // Validate email field
-  if (emailInput.value.trim() === '') {
-    showError(emailInput, 'Specify your email');
-  } else if (!isValidEmail(emailInput.value.trim())) {
-    showError(emailInput, 'Your email is invalid. Please specify a correct one');
-  } else {
-    removeError(emailInput);
-  }
-
-  
-  // Validate age field
-  if (ageSelect.value === '') {
-    showError(ageSelect, 'Выберите свой возраст');
-  } else {
-    removeError(ageSelect);
-  }
+  const screenshotInputs = document.querySelectorAll('input[type="file"]');
+  screenshotInputs.forEach((input) => {
+    validateFileField(input);
+  });
 
   // Submit the form if there are no errors
-  if (form.querySelectorAll('.error').length === 0) {
+  if (!formHasErrors()) {
     form.submit();
   }
 });
 
-// Function to show error message
-function showError(input, message) {
-  const errorContainer = input.nextElementSibling;
-  errorContainer.textContent = message;
-  errorContainer.style.display = 'block'; // Show the error message
-  input.classList.add('error');
+// Function to validate a required input field
+function validateRequiredField(input) {
+  if (input.value.trim() === '') {
+    displayErrorMessage(input, 'This field is required.');
+  }
 }
 
-// Function to remove error message
-function removeError(input) {
-  const errorContainer = input.nextElementSibling;
-  errorContainer.textContent = '';
-  errorContainer.style.display = 'none'; // Hide the error message
-  input.classList.remove('error');
+// Function to validate an email input field
+function validateEmailField(input) {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(input.value.trim())) {
+    displayErrorMessage(input, 'Please enter a valid email address.');
+  }
 }
 
-// Function to validate email format
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+// Function to validate a select field
+function validateSelectField(select) {
+  if (select.value === '') {
+    displayErrorMessage(select, 'Please select an option.');
+  }
+}
+
+// Function to validate a file input field
+function validateFileField(input) {
+  const file = input.files[0];
+  if (!file) {
+    displayErrorMessage(input, 'Please select a file.');
+  } else if (!isFileSupported(file)) {
+    displayErrorMessage(input, 'Please select a valid file format (JPEG, JPG, PNG).');
+  }
+}
+
+// Function to check if a file format is supported
+function isFileSupported(file) {
+  const supportedFormats = ['image/jpeg', 'image/jpg', 'image/png'];
+  return supportedFormats.includes(file.type);
+}
+
+// Function to display an error message for an input field
+function displayErrorMessage(input, message) {
+  const errorDiv = input.parentElement.querySelector('.error');
+  errorDiv.textContent = message;
+  input.classList.add('input-error');
+}
+
+// Function to clear all error messages and remove error styling
+function clearErrorMessages() {
+  const errorDivs = document.querySelectorAll('.error');
+  const inputFields = document.querySelectorAll('.input-error');
+
+  errorDivs.forEach((errorDiv) => {
+    errorDiv.textContent = '';
+  });
+
+  inputFields.forEach((inputField) => {
+    inputField.classList.remove('input-error');
+  });
+}
+
+// Function to check if the form has any errors
+function formHasErrors() {
+  const errorDivs = document.querySelectorAll('.error');
+  return Array.from(errorDivs).some((errorDiv) => errorDiv.textContent !== '');
 }
