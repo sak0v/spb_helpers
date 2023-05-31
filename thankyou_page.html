@@ -5,21 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
   body {
-  background-color: #000;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+      background: linear-gradient(98deg,#ab1e71,#1474d6,#145bd6,#879b0d);
+  background-size: 240% 240%;
+      font-family: 'Poppins', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      animation: gradient-animation 20s ease infinite;
+    }
+    .container {
+  animation: slideInFromLeft 0.5s ease-in-out;
 }
-
-.container {
-  width: 400px;
-  padding: 30px;
-  background-color: #222;
-  border-radius: 10px;
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
+    .container {
+      width: 90%;
+      max-width: 400px;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
 .container label {
   display: block;
@@ -43,28 +61,50 @@
   color: #999;
 }
 
-.container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+.cool-submit-button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0066ff;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: hidden;
   cursor: pointer;
 }
 
-.container button:hover {
-  background-color: #0056b3;
+.cool-submit-button span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #0000ff;
+  opacity: 0.6;
+  transition: width 0.3s ease;
+  z-index: -1;
 }
+
+.cool-submit-button:hover span {
+  width: 100%;
+}
+
+.cool-submit-button:active {
+  background-color: #0044cc;
+}
+
 
 
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Спасибо!</h1>
-    <p><b>Ваша заявка была получена.</b></p>
-    <button onclick="window.location.href='https://docs.google.com/spreadsheets/d/1DqmZBcGQxloG2Iii_Pu_14TQv-33D5nYcf1shqRYbpg/edit?usp=sharing'">Посмотреть результаты заявок</button>
+    <h2>Thank you!</h1>
+    <p><b>Your form has been succesfully submitted.</b></p>
+    <button class="cool-submit-button" onclick="window.location.href='https://docs.google.com/spreadsheets/d/1DqmZBcGQxloG2Iii_Pu_14TQv-33D5nYcf1shqRYbpg/edit?usp=sharing'">Results</button>
 
   </div>
 

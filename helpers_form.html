@@ -11,8 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #333;
+      background: linear-gradient(98deg,#ab1e71,#1474d6,#145bd6,#879b0d);
+  background-size: 240% 240%;
       font-family: 'Poppins', Arial, sans-serif;
       display: flex;
       justify-content: center;
@@ -20,9 +20,21 @@
       height: 100vh;
       margin: 0;
       padding: 0;
+      animation: gradient-animation 20s ease infinite;
     }
     .container {
   animation: slideInFromLeft 0.5s ease-in-out;
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes slideInFromLeft {
@@ -104,19 +116,41 @@
       color: #999;
     }
 
-    .container button {
-      width: 100%;
-      padding: 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+    .cool-submit-button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0066ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: hidden;
+  cursor: pointer;
+}
 
-    .container button:hover {
-      background-color: #0056b3;
-    }
+.cool-submit-button span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #0000ff;
+  opacity: 0.6;
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.cool-submit-button:hover span {
+  width: 100%;
+}
+
+.cool-submit-button:active {
+  background-color: #0044cc;
+}
+
 
     .container .error {
       color: red;
@@ -139,29 +173,37 @@
       <input type="hidden" name="_template" value="table">
       <header> <b>Agent of Support Form</b></header><br>
       <div class="input-control">
-        <label for="name">Ваше настоящее имя:</label>
-        <input type="text" id="name" name="name" 
-        placeholder="Укажите свое настоящее имя" 
-        pattern="[a-z]*" required>
+        <label for="name">Your real name:</label>
+        <input type="text" id="name" name="name" placeholder="Specify your real name" required>
         <div class="error"></div>
       </div>
 
       <div class="input-control">
-        <label for="email">Ваша эл.почта:</label>
-        <input type="email" id="email" name="email" placeholder="Укажите свою эл.почту" required>
+        <label for="email">Your email:</label>
+        <input type="email" id="email" name="email" placeholder="Specify your personal email address" required>
         <div class="error"></div>
       </div>
 
       <div class="input-control">
-        <label for="nickname">Игровой никнейм:</label>
-        <input type="text" id="nickname" name="nickname" placeholder="Укажите свой игровой никнейм" required>
+        <label for="nickname">Nickname:</label>
+        <input type="text" id="nickname" name="nickname" placeholder="Specify your in game nickname" required>
+        <div class="error"></div>
+      </div>
+      <div class="input-control">
+        <label for="vk">VK:</label>
+        <input type="text" id="vk" name="vk" placeholder="Specify your VK ID only!" required>
+        <div class="error"></div>
+      </div>
+      <div class="input-control">
+        <label for="discord">Discord:</label>
+        <input type="text" id="discord" name="discord" placeholder="Specify your discord ID only!" required>
         <div class="error"></div>
       </div>
 
       <div class="input-control">
-        <label for="age">Укажите свой возраст:</label>
+        <label for="age">Age:</label>
         <select id="age" name="age" required>
-          <option disabled selected hidden>Выберите опцию</option>
+          <option disabled selected hidden>Choose your age</option>
           <option value="15">15 лет</option>
           <option value="16">16 лет</option>
           <option value="17">17 лет</option>
@@ -173,19 +215,19 @@
       </div>
 
       <div class="input-control">
-        <sub>Прикрепите скриншот статистики:</sub>
+        <sub>Attach a screenshot of your in game statistic:</sub>
         <input type="file" name="attachment" accept="image/png, image/jpeg" required>
         <div class="error"></div>
       </div>
 
       <div class="input-control">
-        <sub>Прикрепите скриншот своих привязок:</sub>
+        <sub>*In development*:</sub>
         <input type="file" name="attachment" accept="image/png, image/jpeg" required>
         <div class="error"></div>
       </div>
 
       <div class="input-control">
-        <button type="submit">Заполнить</button>
+        <button type="submit" class="cool-submit-button">Submit</button>
       </div>
     </form>
   </div>

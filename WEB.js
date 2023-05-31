@@ -10,30 +10,51 @@ form.addEventListener('submit', function(event) {
   const emailInput = document.getElementById('email');
   const nicknameInput = document.getElementById('nickname');
   const ageSelect = document.getElementById('age');
+  const discord = document.getElementById('discord')
+  const vk = document.getElementById('vk')
 
   // Validate name field
 if (nameInput.value.trim() === '') {
-  showError(nameInput, 'Укажите свое настоящее имя');
+  showError(nameInput, 'Specify your real name');
 } else if (/\d/.test(nameInput.value.trim())) {
-  showError(nameInput, 'Имя не может содержать цифры');
+  showError(nameInput, 'Name');
 } else {
   removeError(nameInput);
 }
 
 // Validate nickname field
 if (nicknameInput.value.trim() === '') {
-  showError(nicknameInput, 'Укажите игровой NickName');
+  showError(nicknameInput, 'Specify your in game NickName');
 } else if (/\d/.test(nicknameInput.value.trim())) {
-  showError(nicknameInput, 'NickName не может содержать цифры');
+  showError(nicknameInput, 'NickName cannot contain numbers');
 } else {
   removeError(nicknameInput);
 }
 
+// Validate discord field
+if (discord.value.trim() === '') {
+  showError(discord, 'Specify your discord ID');
+} else if (/\D/.test(discord.value.trim())) {
+  showError(discord, 'ID can contain only numbers!');
+} else {
+  removeError(discord);
+}
+
+// Validate vk field
+if (vk.value.trim() === '') {
+  showError(vk, 'Specify your VK ID');
+} else if (/\D/.test(vk.value.trim())) {
+  showError(vk, 'ID can contain only numbers!');
+} else {
+  removeError(vk);
+}
+
+
   // Validate email field
   if (emailInput.value.trim() === '') {
-    showError(emailInput, 'Укажите свою эл.почту');
+    showError(emailInput, 'Specify your email');
   } else if (!isValidEmail(emailInput.value.trim())) {
-    showError(emailInput, 'Ваша почта недействительна. Укажите корректную.');
+    showError(emailInput, 'Your email is invalid. Please specify a correct one');
   } else {
     removeError(emailInput);
   }
