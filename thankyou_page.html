@@ -2,60 +2,70 @@
 <html>
 <head>
   <title>Thank You Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-    }
-    
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-    
-    h1 {
-      color: #333;
-      margin-bottom: 20px;
-    }
-    
-    p {
-      color: #555;
-      margin-bottom: 10px;
-    }
-    
-    .thankyou-img {
-      width: 750px;
-      height: auto;
-      margin-bottom: 20px;
-    }
-    
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      margin-top: 10px;
-      background-color: #4CAF50;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-    
-    
-    .button:hover {
-      background-color: #45a049;
-    }
+  body {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 400px;
+  padding: 30px;
+  background-color: #222;
+  border-radius: 10px;
+}
+
+.container label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.container input,
+.container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.container input::placeholder,
+.container select::placeholder {
+  color: #999;
+}
+
+.container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background-color: #0056b3;
+}
+
+
   </style>
 </head>
 <body>
   <div class="container">
-<a href="https://www.somesite.com"><img src="https://www.example.com/logo.jpg" alt="Logo"></a>
-    <p><b>Your message has been received.</b></p>
-    <a class="button" href="helpers_form.html">Go Back to Homepage</a>
+    <h2>Спасибо!</h1>
+    <p><b>Ваша заявка была получена.</b></p>
+    <button onclick="window.location.href='https://docs.google.com/spreadsheets/d/1DqmZBcGQxloG2Iii_Pu_14TQv-33D5nYcf1shqRYbpg/edit?usp=sharing'">Посмотреть результаты заявок</button>
+
   </div>
 
 </body>

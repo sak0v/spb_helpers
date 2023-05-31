@@ -1,44 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Introduction</title>
+    <title>Заявление на SUPPORT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
+            background-color: #000;
+            color: #fff;
             font-family: Arial, sans-serif;
-            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
         
-        h1 {
-            text-align: center;
+        .container {
+            width: 400px;
+            padding: 30px;
+            background-color: #222;
+            border-radius: 10px;
         }
         
-        p {
+        .container label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .container input,
+        .container select {
+            width: 100%;
+            padding: 10px;
             margin-bottom: 20px;
-        }
-        
-        .button-container {
-            text-align: center;
-        }
-        
-        .fill-form-button {
-            padding: 10px 20px;
-            font-size: 18px;
-            background-color: #4CAF50;
-            color: white;
             border: none;
-            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+        }
+        
+        .container input::placeholder,
+        .container select::placeholder {
+            color: #999;
+        }
+        
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        
+        .container input:focus,
+        .container select:focus {
+            outline: none;
+            border-color: #00a8ff;
+        }
+        
+        .container button:focus {
+            background-color: #0086ce;
         }
     </style>
 </head>
 <body>
-    <center>
-    <h1>Заявление на должность "Агента Поддержки"</h1>
-    <p>Добро пожаловать! Данная форма поможет нам собрать всю необходимую информацию о вас.</p>
-    <p>Пожалуйста, внимательно заполните все необходимые поля. Ваша информация будет рассматриваться с соблюдением строгой конфиденциальности.</p>
-    <div class="button-container">
-        <button class="fill-form-button" onclick="window.location.href='helpers_form.html'">Fill the Form</button>
+    <div class="container">
+        <center>
+            <h1>Заявление на должность "Агента Поддержки"</h1>
+            <p>Добро пожаловать! Данная форма поможет нам собрать всю необходимую информацию о вас.</p>
+            <p>Пожалуйста, внимательно заполните все необходимые поля. Ваша информация будет рассматриваться с соблюдением строгой конфиденциальности.</p>
+            <div class="button-container">
+                <button class="fill-form-button" onclick="window.location.href='helpers_form.html'">Заполнить форму</button>
+            </div>
+        </center>
     </div>
-    </center>
 </body>
 </html>
