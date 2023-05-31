@@ -11,19 +11,19 @@ form.addEventListener('submit', (event) => {
 
   // Validate each input field
   const nameInput = document.getElementById('name');
-  validateRequiredField(nameInput);
+  validateNameField(nameInput);
 
   const emailInput = document.getElementById('email');
   validateEmailField(emailInput);
 
   const nicknameInput = document.getElementById('nickname');
-  validateRequiredField(nicknameInput);
+  validateNicknameField(nicknameInput);
 
   const vkInput = document.getElementById('vk');
   validateRequiredField(vkInput);
 
   const discordInput = document.getElementById('discord');
-  validateRequiredField(discordInput);
+  validateDiscordField(discordInput);
 
   const ageSelect = document.getElementById('age');
   validateSelectField(ageSelect);
@@ -39,6 +39,13 @@ form.addEventListener('submit', (event) => {
   }
 });
 
+function validateNameField(input) {
+  const namePattern = /^[A-Za-z]+$/;
+  if (!namePattern.test(input.value.trim())) {
+    displayErrorMessage(input, 'Please enter letters only.');
+  }
+}
+
 // Function to validate a required input field
 function validateRequiredField(input) {
   if (input.value.trim() === '') {
@@ -51,6 +58,22 @@ function validateEmailField(input) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(input.value.trim())) {
     displayErrorMessage(input, 'Please enter a valid email address.');
+  }
+}
+
+// Function to validate a nickname input field
+function validateNicknameField(input) {
+  const nicknamePattern = /^[A-Za-z]+$/;
+  if (!nicknamePattern.test(input.value.trim())) {
+    displayErrorMessage(input, 'Please enter letters only.');
+  }
+}
+
+// Function to validate a discord input field
+function validateDiscordField(input) {
+  const discordPattern = /^\d+$/;
+  if (!discordPattern.test(input.value.trim())) {
+    displayErrorMessage(input, 'Please enter numbers only.');
   }
 }
 
